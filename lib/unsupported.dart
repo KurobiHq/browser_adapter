@@ -29,9 +29,14 @@ void initializeViewPort() {
   throw UnimplementedError();
 }
 
+void replaceBrowserUrl(String path, {String title = ''}) {
+  throw UnimplementedError();
+}
+
 class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
   FocusOutDetector({this.onFocusOut});
+  @override
   dispose() {
     throw UnimplementedError();
   }
@@ -40,6 +45,7 @@ class FocusOutDetector extends inter.FocusOutDetector {
 class PageVisibilityDetector extends inter.PageVisibilityDetector {
   ValueChanged<bool>? onVisibilityChanged;
   PageVisibilityDetector({this.onVisibilityChanged});
+  @override
   dispose() {
     throw UnimplementedError();
   }

@@ -115,6 +115,11 @@ bool isMobileBrowser() {
   return WebBrowserDetectorImp().isaMobileSafari;
 }
 
+void replaceBrowserUrl(String path, {String title = ''}) {
+  final currentState = html.window.history.state;
+  html.window.history.replaceState(currentState, title, path);
+}
+
 EdgeInsets getExtraPadding() {
   //if (!isDesktopBrowser())
   final sat = html.document.documentElement

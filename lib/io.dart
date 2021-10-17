@@ -27,6 +27,8 @@ EdgeInsets getExtraPadding() {
 
 void initializeViewPort() {}
 
+void replaceBrowserUrl(String path, {String title = ''}) {}
+
 class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
   FocusOutDetector({this.onFocusOut});
