@@ -18,6 +18,9 @@ external String get requestedRendererType;
 @JS('window.isSafariBrowserLike')
 external bool get isSafariBrowserLike;
 
+@JS('window.browserVersion')
+external String get browserVersion;
+
 const bool _autoDetect =
     bool.fromEnvironment('FLUTTER_WEB_AUTO_DETECT', defaultValue: false);
 

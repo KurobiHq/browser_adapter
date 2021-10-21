@@ -25,6 +25,8 @@ EdgeInsets getExtraPadding() {
   throw UnimplementedError();
 }
 
+String get browserVersion => throw UnimplementedError();
+
 void initializeViewPort() {
   throw UnimplementedError();
 }

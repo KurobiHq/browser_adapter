@@ -25,6 +25,8 @@ EdgeInsets getExtraPadding() {
   return EdgeInsets.zero;
 }
 
+String get browserVersion => throw UnimplementedError();
+
 void initializeViewPort() {}
 
 void replaceBrowserUrl(String path, {String title = ''}) {}
