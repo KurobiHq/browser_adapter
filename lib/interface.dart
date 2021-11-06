@@ -2,12 +2,17 @@ abstract class BrowserDetector {
   bool get isDesktopBrowser;
 }
 
-abstract class FocusOutDetector {
+class FocusOutDetector {
   FocusOutDetector();
-  dispose();
+  dispose() {}
 }
 
-abstract class PageVisibilityDetector {
+class PageVisibilityDetector {
   PageVisibilityDetector();
-  dispose();
+  dispose() {}
+}
+
+class OnFirstFrameListener {
+  OnFirstFrameListener();
+  dispose() {}
 }

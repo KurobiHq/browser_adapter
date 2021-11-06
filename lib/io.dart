@@ -29,19 +29,21 @@ String get browserVersion => throw UnimplementedError();
 
 void initializeViewPort() {}
 
+void removeDocument(String id) {}
 void replaceBrowserUrl(String path, {String title = ''}) {}
 
 class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
   FocusOutDetector({this.onFocusOut});
-  @override
-  dispose() {}
 }
 
 class PageVisibilityDetector extends inter.PageVisibilityDetector {
   ValueChanged<bool>? onVisibilityChanged;
   PageVisibilityDetector({this.onVisibilityChanged});
+}
 
-  @override
-  dispose() {}
+class OnFirstFrameListener extends inter.PageVisibilityDetector {
+  VoidCallback? onFirstFrame;
+
+  OnFirstFrameListener({this.onFirstFrame});
 }

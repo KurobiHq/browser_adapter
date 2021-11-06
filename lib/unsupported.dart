@@ -31,6 +31,10 @@ void initializeViewPort() {
   throw UnimplementedError();
 }
 
+void removeDocument(String id) {
+  throw UnimplementedError();
+}
+
 void replaceBrowserUrl(String path, {String title = ''}) {
   throw UnimplementedError();
 }

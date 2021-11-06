@@ -164,6 +164,13 @@ void initializeViewPort() {
   html.document.head!.append(viewportMeta);
 }
 
+void removeDocument(String id) {
+  final loader = html.document.getElementById(id);
+  if (loader != null) {
+    loader.remove();
+  }
+}
+
 class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
 
@@ -196,5 +203,22 @@ class PageVisibilityDetector extends inter.PageVisibilityDetector {
   void _handleChange(event) {
     final visible = !(html.document.hidden ?? false);
     onVisibilityChanged?.call(visible);
+  }
+}
+
+class OnFirstFrameListener extends inter.PageVisibilityDetector {
+  VoidCallback? onFirstFrame;
+  
+  OnFirstFrameListener({this.onFirstFrame}) {
+    html.window.addEventListener('flutter-first-frame', _handleFirstFrame);
+  }
+
+  void _handleFirstFrame(event) {
+    onFirstFrame?.call();
+  }
+
+  @override
+  dispose() {
+    html.window.removeEventListener('flutter-first-frame', _handleFirstFrame);
   }
 }
