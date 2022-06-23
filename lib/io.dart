@@ -17,6 +17,10 @@ bool isSafariBrowser() {
   return false;
 }
 
+bool isPWA() {
+  return false;
+}
+
 bool isMobileBrowser() {
   return false;
 }

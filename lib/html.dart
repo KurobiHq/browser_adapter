@@ -21,6 +21,9 @@ external bool get isSafariBrowserLike;
 @JS('window.browserVersion')
 external String get browserVersion;
 
+@JS('navigator.standalone')
+external bool? get standAlone;
+
 const bool _autoDetect =
     bool.fromEnvironment('FLUTTER_WEB_AUTO_DETECT', defaultValue: false);
 
@@ -101,6 +104,11 @@ bool isCanvasKitRenderer() {
 
 bool isDesktopBrowser() {
   return WebBrowserDetectorImp().isDesktopBrowser;
+}
+
+bool isPWA() {
+  return (standAlone ?? false) ||
+      html.window.matchMedia('(display-mode: standalone)').matches;
 }
 
 bool isClipSupported() {
@@ -208,7 +216,7 @@ class PageVisibilityDetector extends inter.PageVisibilityDetector {
 
 class OnFirstFrameListener extends inter.PageVisibilityDetector {
   VoidCallback? onFirstFrame;
-  
+
   OnFirstFrameListener({this.onFirstFrame}) {
     html.window.addEventListener('flutter-first-frame', _handleFirstFrame);
   }

@@ -17,6 +17,10 @@ bool isSafariBrowser() {
   throw UnimplementedError();
 }
 
+bool isPWA() {
+  throw UnimplementedError();
+}
+
 bool isMobileBrowser() {
   throw UnimplementedError();
 }
