@@ -56,6 +56,11 @@ const Set<OperatingSystem> _desktopOperatingSystems = {
   OperatingSystem.windows,
 };
 
+const Set<OperatingSystem> _mobileOperatingSystems = {
+  OperatingSystem.iOs,
+  OperatingSystem.android,
+};
+
 class WebBrowserDetectorImp {
   WebBrowserDetectorImp() {
     _operatingSystem = _detectOperatingSystem();
@@ -92,6 +97,8 @@ class WebBrowserDetectorImp {
   }
 
   bool get isaMobileSafari => _operatingSystem == OperatingSystem.iOs;
+
+  bool get isaMobile => _mobileOperatingSystems.contains(_operatingSystem);
 }
 
 bool isCanvasKitRenderer() {
@@ -123,7 +130,7 @@ bool isSafariBrowser() {
 }
 
 bool isMobileBrowser() {
-  return WebBrowserDetectorImp().isaMobileSafari;
+  return WebBrowserDetectorImp().isaMobile;
 }
 
 void replaceBrowserUrl(String path, {String title = ''}) {
