@@ -46,6 +46,12 @@ class PageVisibilityDetector extends inter.PageVisibilityDetector {
   PageVisibilityDetector({this.onVisibilityChanged});
 }
 
+class KeyboardHeightVisibilityDetector
+    extends inter.KeyboardHeightVisibilityDetector {
+  ValueChanged<bool>? onVisibilityChanged;
+  KeyboardHeightVisibilityDetector({this.onVisibilityChanged});
+}
+
 class OnFirstFrameListener extends inter.PageVisibilityDetector {
   VoidCallback? onFirstFrame;
 

@@ -12,6 +12,12 @@ class PageVisibilityDetector {
   dispose() {}
 }
 
+class KeyboardHeightVisibilityDetector {
+  KeyboardHeightVisibilityDetector();
+  static bool isSupported() => false;
+  dispose() {}
+}
+
 class OnFirstFrameListener {
   OnFirstFrameListener();
   dispose() {}

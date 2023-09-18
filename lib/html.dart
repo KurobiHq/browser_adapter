@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'interface.dart' as inter;
@@ -235,5 +236,48 @@ class OnFirstFrameListener extends inter.PageVisibilityDetector {
   @override
   dispose() {
     html.window.removeEventListener('flutter-first-frame', _handleFirstFrame);
+  }
+}
+
+const _kHeuristicViewPortHeightClientRatio = 0.85;
+
+class KeyboardHeightVisibilityDetector
+    extends inter.KeyboardHeightVisibilityDetector {
+  ValueChanged<bool>? onVisibilityChanged;
+  late StreamSubscription sub;
+  KeyboardHeightVisibilityDetector({this.onVisibilityChanged}) {
+    print("KeyBoard Visibility Supported: ${isSupported()}");
+    if (!isSupported()) {
+      return;
+    }
+    sub = MergeStream([
+      html.document.onScroll
+          .map<html.VisualViewport>((_) => html.window.visualViewport!),
+      html.document.onResize
+          .map<html.VisualViewport>((_) => html.window.visualViewport!),
+    ])
+        .debounceTime(const Duration(milliseconds: 800))
+        .map<bool>((event) {
+          print("Document resized of scroll: ${event.height}");
+          if (html.document.documentElement?.clientHeight != null &&
+              event.height != null &&
+              event.scale != null) {
+            return ((event.height! * event.scale!) /
+                    html.document.documentElement!.clientHeight) <
+                _kHeuristicViewPortHeightClientRatio;
+          }
+          return false;
+        })
+        .distinct()
+        .listen((value) {
+          onVisibilityChanged?.call(value);
+        });
+  }
+
+  static bool isSupported() => html.window.visualViewport != null;
+
+  @override
+  dispose() {
+    sub.cancel();
   }
 }
