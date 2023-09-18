@@ -14,7 +14,7 @@ class PageVisibilityDetector {
 
 abstract class KeyboardHeightVisibilityDetector {
   KeyboardHeightVisibilityDetector();
-  static bool isSupported() => false;
+  bool isSupported();
   Stream<bool> getStream();
   dispose() {}
 }

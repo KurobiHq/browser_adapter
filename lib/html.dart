@@ -270,5 +270,6 @@ class KeyboardHeightVisibilityDetector
   @override
   Stream<bool> getStream() => _stream;
 
-  static bool isSupported() => html.window.visualViewport != null;
+  @override
+  bool isSupported() => html.window.visualViewport != null;
 }

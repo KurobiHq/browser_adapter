@@ -52,6 +52,9 @@ class KeyboardHeightVisibilityDetector
 
   @override
   Stream<bool> getStream() => throw UnimplementedError();
+
+  @override
+  bool isSupported() => false;
 }
 
 class OnFirstFrameListener extends inter.PageVisibilityDetector {
