@@ -66,5 +66,5 @@ class KeyboardHeightVisibilityDetector
   KeyboardHeightVisibilityDetector();
 
   @override
-  Stream? getStream() => throw UnimplementedError();
+  Stream<bool> getStream() => throw UnimplementedError();
 }
