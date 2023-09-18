@@ -251,10 +251,10 @@ class KeyboardHeightVisibilityDetector
     _stream = MergeStream([
       html.window.visualViewport!.onResize
           .map<html.VisualViewport>((_) => html.window.visualViewport!),
-      html.window.visualViewport!.onScroll
-          .map<html.VisualViewport>((_) => html.window.visualViewport!),
-      html.window.onScroll
-          .map<html.VisualViewport>((_) => html.window.visualViewport!),
+      // html.window.visualViewport!.onScroll
+      //     .map<html.VisualViewport>((_) => html.window.visualViewport!),
+      // html.window.onScroll
+      //     .map<html.VisualViewport>((_) => html.window.visualViewport!),
     ]).map<bool>((event) {
       if (html.document.documentElement?.clientHeight != null &&
           event.height != null &&
