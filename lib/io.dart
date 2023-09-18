@@ -48,8 +48,10 @@ class PageVisibilityDetector extends inter.PageVisibilityDetector {
 
 class KeyboardHeightVisibilityDetector
     extends inter.KeyboardHeightVisibilityDetector {
-  ValueChanged<bool>? onVisibilityChanged;
-  KeyboardHeightVisibilityDetector({this.onVisibilityChanged});
+  KeyboardHeightVisibilityDetector();
+
+  @override
+  Stream? getStream() => throw UnimplementedError();
 }
 
 class OnFirstFrameListener extends inter.PageVisibilityDetector {

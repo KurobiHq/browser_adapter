@@ -243,14 +243,13 @@ const _kHeuristicViewPortHeightClientRatio = 0.85;
 
 class KeyboardHeightVisibilityDetector
     extends inter.KeyboardHeightVisibilityDetector {
-  ValueChanged<bool>? onVisibilityChanged;
-  late StreamSubscription sub;
-  KeyboardHeightVisibilityDetector({this.onVisibilityChanged}) {
+  late Stream _stream;
+  KeyboardHeightVisibilityDetector() {
     print("KeyBoard Visibility Supported: ${isSupported()}");
     if (!isSupported()) {
       return;
     }
-    sub = MergeStream([
+    _stream = MergeStream([
       html.document.onScroll
           .map<html.VisualViewport>((_) => html.window.visualViewport!),
       html.document.onResize
@@ -269,15 +268,11 @@ class KeyboardHeightVisibilityDetector
           return false;
         })
         .distinct()
-        .listen((value) {
-          onVisibilityChanged?.call(value);
-        });
+        .asBroadcastStream();
   }
-
-  static bool isSupported() => html.window.visualViewport != null;
 
   @override
-  dispose() {
-    sub.cancel();
-  }
+  Stream? getStream() => _stream;
+
+  static bool isSupported() => html.window.visualViewport != null;
 }

@@ -12,9 +12,10 @@ class PageVisibilityDetector {
   dispose() {}
 }
 
-class KeyboardHeightVisibilityDetector {
+abstract class KeyboardHeightVisibilityDetector {
   KeyboardHeightVisibilityDetector();
   static bool isSupported() => false;
+  Stream? getStream();
   dispose() {}
 }
 

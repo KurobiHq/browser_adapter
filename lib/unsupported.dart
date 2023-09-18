@@ -60,3 +60,11 @@ class PageVisibilityDetector extends inter.PageVisibilityDetector {
     throw UnimplementedError();
   }
 }
+
+class KeyboardHeightVisibilityDetector
+    extends inter.KeyboardHeightVisibilityDetector {
+  KeyboardHeightVisibilityDetector();
+
+  @override
+  Stream? getStream() => throw UnimplementedError();
+}
