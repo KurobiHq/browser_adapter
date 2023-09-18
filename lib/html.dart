@@ -249,12 +249,8 @@ class KeyboardHeightVisibilityDetector
     if (!isSupported()) {
       return;
     }
-    _stream = MergeStream([
-      html.document.onScroll
-          .map<html.VisualViewport>((_) => html.window.visualViewport!),
-      html.document.onResize
-          .map<html.VisualViewport>((_) => html.window.visualViewport!),
-    ])
+    _stream = html.document.onResize
+        .map<html.VisualViewport>((_) => html.window.visualViewport!)
         .debounceTime(const Duration(milliseconds: 800))
         .map<bool>((event) {
           print("Document resized of scroll: ${event.height}");
