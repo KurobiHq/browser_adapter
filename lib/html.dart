@@ -255,19 +255,16 @@ class KeyboardHeightVisibilityDetector
           .map<html.VisualViewport>((_) => html.window.visualViewport!),
       html.window.onScroll
           .map<html.VisualViewport>((_) => html.window.visualViewport!),
-    ])
-        .map<bool>((event) {
-          if (html.document.documentElement?.clientHeight != null &&
-              event.height != null &&
-              event.scale != null) {
-            return ((event.height! * event.scale!) /
-                    html.document.documentElement!.clientHeight) <
-                _kHeuristicViewPortHeightClientRatio;
-          }
-          return false;
-        })
-        .distinct()
-        .asBroadcastStream();
+    ]).map<bool>((event) {
+      if (html.document.documentElement?.clientHeight != null &&
+          event.height != null &&
+          event.scale != null) {
+        return ((event.height! * event.scale!) /
+                html.document.documentElement!.clientHeight) <
+            _kHeuristicViewPortHeightClientRatio;
+      }
+      return false;
+    }).distinct();
   }
 
   @override
