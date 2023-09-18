@@ -245,7 +245,6 @@ class KeyboardHeightVisibilityDetector
     extends inter.KeyboardHeightVisibilityDetector {
   late Stream<bool> _stream;
   KeyboardHeightVisibilityDetector() {
-    print("KeyBoard Visibility Supported: ${isSupported()}");
     if (!isSupported()) {
       return;
     }
@@ -257,9 +256,7 @@ class KeyboardHeightVisibilityDetector
       html.window.onScroll
           .map<html.VisualViewport>((_) => html.window.visualViewport!),
     ])
-        .debounceTime(const Duration(milliseconds: 800))
         .map<bool>((event) {
-          print("Document resized of scroll: ${event.height}");
           if (html.document.documentElement?.clientHeight != null &&
               event.height != null &&
               event.scale != null) {
