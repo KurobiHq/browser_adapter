@@ -36,28 +36,11 @@ void replaceBrowserUrl(String path, {String title = ''}) {
 
 EdgeInsets getExtraPadding() {
   //if (!isDesktopBrowser())
-  final sat = web.document.documentElement
-          ?.computedStyleMap()
-          .get("--sat")
-          .toString() ??
-      '';
-  final sar = web.document.documentElement
-          ?.computedStyleMap()
-          .get("--sar")
-          .toString() ??
-      '';
-
-  final sab = web.document.documentElement
-          ?.computedStyleMap()
-          .get("--sab")
-          .toString() ??
-      '';
-
-  final sal = web.document.documentElement
-          ?.computedStyleMap()
-          .get("--sal")
-          .toString() ??
-      '';
+  final element = web.document.documentElement as web.HTMLElement;
+  final sat = element.style.getPropertyValue("--sat");
+  final sar = element.style.getPropertyValue("--sar");
+  final sab = element.style.getPropertyValue("--sab");
+  final sal = element.style.getPropertyValue("--sal");
   //print('sat: $sat, sar:$sar, sab:$sab, sal:$sal');
   return EdgeInsets.fromLTRB(
       stringToVal(sal), stringToVal(sat), stringToVal(sar), stringToVal(sab));
