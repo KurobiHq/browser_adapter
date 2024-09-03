@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
 import 'interface.dart' as inter;
 
-bool isCanvasKitRenderer() {
-  return false;
-}
+bool get isDesktopBrowser => throw UnimplementedError();
 
-bool isDesktopBrowser() {
-  return false;
-}
+bool get isSafariBrowser => throw UnimplementedError();
 
-bool isClipSupported() {
-  return true;
-}
+bool get isPWA => throw UnimplementedError();
 
-bool isSafariBrowser() {
-  return false;
-}
+bool get isMobileBrowser => throw UnimplementedError();
 
-bool isPWA() {
-  return false;
-}
-
-bool isMobileBrowser() {
-  return false;
-}
+bool get isWasm => throw UnimplementedError();
 
 EdgeInsets getExtraPadding() {
   return EdgeInsets.zero;
