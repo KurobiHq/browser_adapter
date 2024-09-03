@@ -71,7 +71,6 @@ double stringToVal(String val) {
 }
 
 void initializeViewPort() {
-  web.HTMLElement.nav();
   final viewportMeta = web.document.createElement('meta')
     ..setAttribute('flt-viewport', '');
   viewportMeta.setAttribute('name', 'viewport');
