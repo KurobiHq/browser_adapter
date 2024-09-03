@@ -1,7 +1,6 @@
 @JS()
 
 import 'dart:async';
-import 'dart:js_interop' as interop;
 import 'dart:ui_web' as ui_web;
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
@@ -73,12 +72,14 @@ class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
 
   FocusOutDetector({this.onFocusOut}) {
-    web.document.addEventListener('focusout', _handleFocusOut.toJS);
+    web.document
+        .addEventListener('focusout', _handleFocusOut as web.EventHandler);
   }
 
   @override
   dispose() {
-    web.document.removeEventListener('focusout', _handleFocusOut.toJS);
+    web.document
+        .removeEventListener('focusout', _handleFocusOut as web.EventHandler);
   }
 
   void _handleFocusOut(event) {
@@ -108,7 +109,8 @@ class OnFirstFrameListener extends inter.PageVisibilityDetector {
   VoidCallback? onFirstFrame;
 
   OnFirstFrameListener({this.onFirstFrame}) {
-    web.window.addEventListener('flutter-first-frame', _handleFirstFrame.toJS);
+    web.window.addEventListener(
+        'flutter-first-frame', _handleFirstFrame as web.EventHandler);
   }
 
   void _handleFirstFrame(event) {
@@ -117,8 +119,8 @@ class OnFirstFrameListener extends inter.PageVisibilityDetector {
 
   @override
   dispose() {
-    web.window
-        .removeEventListener('flutter-first-frame', _handleFirstFrame.toJS);
+    web.window.removeEventListener(
+        'flutter-first-frame', _handleFirstFrame as web.EventHandler);
   }
 }
 
@@ -131,8 +133,8 @@ class KeyboardHeightVisibilityDetector
     if (!isSupported()) {
       return;
     }
-    web.window.visualViewport!.onscroll = _checkViewPort.toJS;
-    web.window.visualViewport!.onscroll = _checkViewPort.toJS;
+    web.window.visualViewport!.onscroll = _checkViewPort as web.EventHandler;
+    web.window.visualViewport!.onscroll = _checkViewPort as web.EventHandler;
   }
 
   void _checkViewPort(event) {
