@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'interface.dart' as inter;
 
-bool get isDesktopBrowser => throw UnimplementedError();
+bool get isDesktopBrowser => false;
 
-bool get isSafariBrowser => throw UnimplementedError();
+bool get isSafariBrowser => false;
 
-bool get isPWA => throw UnimplementedError();
+bool get isPWA => false;
 
-bool get isMobileBrowser => throw UnimplementedError();
+bool get isMobileBrowser => false;
 
-bool get isWasm => throw UnimplementedError();
+bool get isWasm => false;
 
 EdgeInsets getExtraPadding() {
   return EdgeInsets.zero;
