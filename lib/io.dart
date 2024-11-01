@@ -22,6 +22,8 @@ void initializeViewPort() {}
 void removeDocument(String id) {}
 void replaceBrowserUrl(String path, {String title = ''}) {}
 
+Future<bool> canOpenDeepLinkFromWeb(String link) => Future.value(true);
+
 class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
   FocusOutDetector({this.onFocusOut});

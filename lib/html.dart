@@ -68,6 +68,25 @@ void removeDocument(String id) {
   }
 }
 
+Future<bool> canOpenDeepLinkFromWeb(String url) async {
+  final start = DateTime.now();
+
+  // Create an invisible iframe to try opening the URL
+  // Create an invisible iframe to try opening the URL
+  final iframe = web.document.createElement('iframe') as web.HTMLIFrameElement;
+  iframe.style.display = 'none';
+  iframe.src = url;
+  web.document.body?.append(iframe);
+
+  // Wait for a short delay to check if the app opened
+  await Future.delayed(const Duration(seconds: 1));
+  final elapsed = DateTime.now().difference(start).inMilliseconds;
+  iframe.remove(); // Clean up the iframe
+
+  // Return true if the app likely opened, otherwise false
+  return elapsed < 1500;
+}
+
 class FocusOutDetector extends inter.FocusOutDetector {
   VoidCallback? onFocusOut;
 

@@ -11,6 +11,8 @@ bool get isMobileBrowser => throw UnimplementedError();
 
 bool get isWasm => throw UnimplementedError();
 
+Future<bool> canOpenDeepLinkFromWeb(String link) => throw UnimplementedError();
+
 EdgeInsets getExtraPadding() {
   throw UnimplementedError();
 }
