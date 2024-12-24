@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  js: ^0.7.1
   rxdart: ^0.27.7
   web: ^1.0.0
 

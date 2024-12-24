@@ -1,5 +1,3 @@
-@JS()
-
 import 'dart:async';
 import 'dart:ui_web' as ui_web;
 import 'package:flutter/material.dart';
@@ -8,21 +6,11 @@ import 'package:rxdart/rxdart.dart';
 import 'package:web/web.dart' as web;
 import 'interface.dart' as inter;
 
-import 'package:js/js.dart';
-
-@JS('window.browserVersion')
-external String get browserVersion;
-
-@JS('navigator.standalone')
-external bool? get standAlone;
-
 bool get isWasm => ui_web.BrowserDetection.instance.isWasm;
 
 bool get isDesktopBrowser => ui_web.BrowserDetection.instance.isDesktop;
 
-bool get isPWA =>
-    (standAlone ?? false) ||
-    web.window.matchMedia('(display-mode: standalone)').matches;
+bool get isPWA => web.window.matchMedia('(display-mode: standalone)').matches;
 
 bool get isSafariBrowser => ui_web.BrowserDetection.instance.isSafari;
 
